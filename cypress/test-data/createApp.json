@@ -1,0 +1,16 @@
+{
+    "user": "Shayne",
+    "changeApplicationMenu": "Change Application",
+    "createAppPageText": "Which app will you be using today?",
+    "createNewAppText": "Create New App",
+    "accountSetupText": "ACCOUNT SETUP",
+    "submitButtonText": "Submit",
+    "searchTextField": "Search...",
+
+    "successCreateAppText": "We are now building your app. Pls. check the App List after a few moments",
+    "errorExistingAppText": "There was an error processing your request. There was a conflict in the submitted data.",
+
+    "template": "6046c197-4f4d-406a-9d45-dc3da3470e12",
+    "applicationForTesting": "Shayne release_1117",    
+    "existingApp": "Shayne enterprise"
+}
