@@ -1,0 +1,13 @@
+{
+    "bizPlusUrl": "https://creators-release.ae-qa.techtank.ca/bp-setup",
+    "appNamePrefix": "Shayne biz plus app name_",
+    "yourNamePrefix": "Shayne biz plus your name_",
+    "emailAddressPrefix": "shayne+bizPlus+",
+    "emailAddressSuffix": "@techtank.ca",
+    "password": "Test@1234",
+    "invalidPassword": "test",
+
+    "errorInvalidEmailFormatPrefix": "Please include an '@' in the address. '",
+    "errorInvalidEmailFormatSuffix": "' is missing an '@'.",
+    "errorInvalidPassword": "Minimum 8 characters"
+}
