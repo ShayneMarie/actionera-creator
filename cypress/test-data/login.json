@@ -2,5 +2,6 @@
     "validEmail": "shayne@techtank.ca",
     "validPassword": "Test@1234",
     "switchToOnboardingWizardView": "Switch to Onboarding Wizard View",
-    "errorInvalidEmailAddress": "Invalid Email or password."
+    "errorInvalidEmailAddress": "Invalid Email or password.",
+    "onboardingWizardWelcomeText": "Welcome to the Launch Your App Wizard"
 }
