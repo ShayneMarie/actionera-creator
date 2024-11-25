@@ -1,0 +1,8 @@
+{
+    "appNamePrefix": "Shayne enterprise plus app name_",
+    "yourNamePrefix": "Shayne enterprise plus your name_",
+    "emailAddressPrefix": "shayne+enterprise",
+    "emailAddressSuffix": "@techtank.ca",
+    "password": "Test@1234",
+    "invalidPassword": "test"
+}

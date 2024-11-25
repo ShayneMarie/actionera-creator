@@ -79,10 +79,10 @@ describe('Biz+ onboarding', () => {
   })
 
   it('Check biz+ onboarding tab', () => {
-    onboarding.bizPlusTab()
+    onboarding.onboardingTab()
   })
 
   it('Checks biz+ sections', () => {
-    onboarding.bizPlusSection()
+    onboarding.bizPlusAndEnterpriseSection()
   })
 })

@@ -13,7 +13,7 @@ const appStoreInfoSectionText = 'App Store Info'
 const developerAccountsSectionText = 'Developer Accounts'
 
 class onboarding{
-    bizPlusTab(){
+    onboardingTab(){
         cy.contains(progressTabText).should('exist')
         cy.contains(designTabText).should('exist')
         cy.contains(revniewTabText).should('exist')
@@ -23,7 +23,7 @@ class onboarding{
         cy.contains(appInfoTabText).should('exist')
     }
 
-    bizPlusSection(isAdmin = false){
+    bizPlusAndEnterpriseSection(isAdmin = false){
         if (isAdmin) cy.contains(buildAndSubmitSectionText).should('exist')
         
         cy.contains(appDesignSectionText).should('exist')
