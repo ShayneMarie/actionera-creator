@@ -31,51 +31,95 @@ const portalHomeMenuLocator = 'a[href="/portal_homescreen"]'
 const freeAccountMessageMenuLocator = 'a[href="/free_account_message"]'
 
 class admin{
-    redirectsToAdminMenuItemPage(menuitem){
+    redirectsToAdminMenuItemPage(menuitem, isAdmin = true){
         if(menuitem == accountSetupText){
-            cy.contains(accountSetupText).click({ force: true })
-            cy.contains(nameOfAppText).should('exist')
-            cy.url().should('contain', '/app/setup')
+            if(isAdmin){
+                cy.contains(accountSetupText).click({ force: true })
+                cy.contains(nameOfAppText).should('exist')
+                cy.url().should('contain', '/app/setup')
+            } else {
+                cy.log('No Access to menu item')
+            }
         } else if(menuitem == domainSetupText) {
-            cy.contains(domainSetupText).click({ force: true })
-            cy.contains(customUrlsText).should('exist')
-            cy.url().should('contain', '/app/domains')
+            if(isAdmin){
+                cy.contains(domainSetupText).click({ force: true })
+                cy.contains(customUrlsText).should('exist')
+                cy.url().should('contain', '/app/domains')
+            } else {
+                cy.log('No Access to menu item')
+            }
         } else if(menuitem == aboutAppText) {
+            if(isAdmin){
             cy.contains(aboutAppText).click({ force: true })
             cy.contains(aboutAppText).should('exist')
             cy.url().should('contain', '/app/about')
+            } else {
+                cy.log('No Access to menu item')
+            }
         } else if(menuitem == whatsNewText) {
-            cy.contains(whatsNewText).click({ force: true })
-            cy.contains(publishDateText).should('exist')
-            cy.url().should('contain', '/whats_new')
+            if(isAdmin){
+                cy.contains(whatsNewText).click({ force: true })
+                cy.contains(publishDateText).should('exist')
+                cy.url().should('contain', '/whats_new')
+            } else {
+                cy.log('No Access to menu item')
+            }
         } else if(menuitem == manageUsersText) {
-            cy.contains(manageUsersText).click({ force: true })
-            cy.contains(allAppsText).should('exist')
-            cy.url().should('contain', '/users')
+            if(isAdmin){
+                cy.contains(manageUsersText).click({ force: true })
+                cy.contains(allAppsText).should('exist')
+                cy.url().should('contain', '/users')
+            } else {
+                cy.log('No Access to menu item')
+            }
         } else if(menuitem == superUsersText) {
-            cy.contains(superUsersText).click({ force: true })
-            cy.contains(appOrRoleText).should('exist')
-            cy.url().should('contain', '/super-users')
+            if(isAdmin){
+                cy.contains(superUsersText).click({ force: true })
+                cy.contains(appOrRoleText).should('exist')
+                cy.url().should('contain', '/super-users')
+            } else {
+                cy.log('No Access to menu item')
+            }
         } else if(menuitem == unlinkedMediaText) {
-            cy.contains(unlinkedMediaText).click({ force: true })
-            cy.contains(mediaTypText).should('exist')
-            cy.url().should('contain', '/unlink-media')
+            if(isAdmin){
+                cy.contains(unlinkedMediaText).click({ force: true })
+                cy.contains(mediaTypText).should('exist')
+                cy.url().should('contain', '/unlink-media')
+            } else {
+                cy.log('No Access to menu item')
+            }
         } else if(menuitem == removedAppsText) {
-            cy.contains(removedAppsText).click({ force: true })
-            cy.contains(removedAppsText).should('exist')
-            cy.url().should('contain', '/removed_apps')
+            if(isAdmin){
+                cy.contains(removedAppsText).click({ force: true })
+                cy.contains(removedAppsText).should('exist')
+                cy.url().should('contain', '/removed_apps')
+            } else {
+                cy.log('No Access to menu item')
+            }
         } else if(menuitem == accountStatusText) {
-            cy.contains(accountStatusText).click({ force: true })
-            cy.contains(pendingDesignationText).should('exist')
-            cy.url().should('contain', '/account_status')
+            if(isAdmin){
+                cy.contains(accountStatusText).click({ force: true })
+                cy.contains(pendingDesignationText).should('exist')
+                cy.url().should('contain', '/account_status')
+            } else {
+                cy.log('No Access to menu item')
+            }
         } else if(menuitem == globalFieldsText) {
-            cy.contains(globalFieldsText).click({ force: true })
-            cy.contains(androidText).should('exist')
-            cy.url().should('contain', '/global-fields')
-        } else {
-            cy.contains(onboardingTrackerText).click({ force: true })
-            cy.contains(appNameText).should('exist')
-            cy.url().should('contain', '/onboarding_tracker')            
+            if(isAdmin){
+                cy.contains(globalFieldsText).click({ force: true })
+                cy.contains(androidText).should('exist')
+                cy.url().should('contain', '/global-fields')
+            } else {
+                cy.log('No Access to menu item')
+            }
+        } else if(menuitem == globalFieldsText) {
+            if(isAdmin){
+                cy.contains(onboardingTrackerText).click({ force: true })
+                cy.contains(appNameText).should('exist')
+                cy.url().should('contain', '/onboarding_tracker')            
+            } else {
+                cy.log('No Access to menu item')
+            }
         }
     }
 

@@ -28,7 +28,7 @@ describe('Entperprise', () => {
     changeApplication.searchApplication(`${enterpriseTestData.appNamePrefix+today}`)
     changeApplication.selectApplication(`${enterpriseTestData.appNamePrefix+today}`)
 
-    admin.redirectsToAdminMenuItemPage()
+    admin.redirectsToAdminMenuItemPage('ACCOUNT SETUP')
     admin.checkBizPlusAccountSetup()
     admin.updateBizPlusToEnterprise()
 
@@ -48,7 +48,7 @@ describe('Enterprise onboarding', () => {
         changeApplication.searchApplication(enterpriseApplicationName)
         changeApplication.selectApplication(enterpriseApplicationName)
 
-        admin.redirectsToAdminMenuItemPage()
+        admin.redirectsToAdminMenuItemPage('ACCOUNT SETUP')
         admin.checkBizPlusAccountSetup()
         admin.updateBizPlusToEnterprise()
     })

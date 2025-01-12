@@ -55,7 +55,7 @@ describe('Biz+ checking', () => {
   })
 
   it('Check Account Setup', () => {
-    admin.redirectsToAccountSetupPage()
+    admin.redirectsToAdminMenuItemPage('ACCOUNT SETUP')
     admin.checkBizPlusAccountSetup()
   })
 
