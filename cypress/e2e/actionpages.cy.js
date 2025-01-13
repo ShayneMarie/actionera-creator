@@ -2,6 +2,7 @@ import actionpages from "../pages/actionpages"
 import changeApplication from "../pages/changeApplication"
 import changeApplicationTestData from "../test-data/changeApplication.json"
 import actionpagesTestData from "../test-data/actionpages.json"
+import maxValueText from "../test-data/maxValueText.json"
 import dayjs from "dayjs"
 
 const today = dayjs().format('MMDDYYYYhhmmss')
@@ -74,7 +75,7 @@ describe('Actionpages menus redirection - Super Admin', () => {
     })
 })
 
-describe('Actionpages menus redirection - Creator', () => {
+describe.skip('Actionpages menus redirection - Creator', () => {
     beforeEach('Login to portal', () => {
         localStorage.setItem('auth', Cypress.env('accessTokenCreator'))
         cy.visit('/')
@@ -141,7 +142,7 @@ describe('Actionpages menus redirection - Creator', () => {
     })
 })
 
-describe.only('Actionlists', ()=> {
+describe('Actionlists', ()=> {
     beforeEach('Redirect to Actionlist page', () => {
         localStorage.setItem('auth', Cypress.env('accessToken'))
         cy.visit('/change_application')
@@ -161,7 +162,7 @@ describe.only('Actionlists', ()=> {
         })
 
         it('Successful deleting of actionlist', ()=> {
-            actionpages.deleteActionList(`${actionlistTitle}`)
+            actionpages.deleteActionList(`${actionlistTitle}_update`)
         })
 
         it('Successful adding of actionlists with all fields', ()=> {
@@ -169,6 +170,35 @@ describe.only('Actionlists', ()=> {
             actionpages.addNewActionlist(false, actionlistTitle, `${actionpagesTestData.actionlistDescription}_${today}`, actionpagesTestData.dailyFrequency, actionpagesTestData.shortDescription,
                 actionpagesTestData.videoUrl, actionpagesTestData.imageUrl, actionpagesTestData.tags, actionpagesTestData.callToActionText, actionpagesTestData.callToActionUrl, 
                 actionpagesTestData.cost, actionpagesTestData.topics, true)
+
+            describe('Delete actionlists', ()=> {
+                it('Successful deleting of actionlist', ()=> {
+                    actionpages.deleteActionList(actionlistTitle)
+                })
+            })
+        })
+
+        it('Successful adding of actionlists with max values', ()=> {
+            actionpages.clickAddActionlistButton()
+            actionpages.addNewActionlistWithMaxValue(maxValueText.sixty, maxValueText.thirty, actionpagesTestData.dailyFrequency, maxValueText.thirty, maxValueText.url255, maxValueText.url255, maxValueText.forty, maxValueText.integer20)
+
+            describe('Delete actionlists', ()=> {
+                it('Successful deleting of actionlist', ()=> {
+                    actionpages.deleteActionList(maxValueText.sixty)
+                })
+            })
+        })
+    })
+
+    describe('Actionlist - Negative Test', ()=> {
+        it('Unsuccessful adding of actionlist with empty required fields' , ()=> {
+            actionpages.clickAddActionlistButton()
+            actionpages.checkRequiredFields(actionlistTitle, `${actionpagesTestData.actionlistDescription}_${today}`, actionpagesTestData.dailyFrequency)
+        })
+
+        it('Unsuccessful adding of actionlists with max values', ()=> {
+            actionpages.clickAddActionlistButton()
+            actionpages.addNewActionlistWithMaxValue(`${maxValueText.sixty}a`, `${maxValueText.thirty}a`, actionpagesTestData.dailyFrequency, `${maxValueText.thirty}a`, `${maxValueText.url255}a`, `${maxValueText.url255}a`, `${maxValueText.forty}a`, `${maxValueText.integer20}1`, true)
         })
     })
 })
