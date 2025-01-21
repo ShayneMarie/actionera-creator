@@ -133,7 +133,7 @@ class actionpages{
         }
     }
 
-    checkRequiredFields(title, description, frequency, shortDescription){
+    checkActionlistsRequiredFields(title, description, frequency, shortDescription){
         cy.get(actionpagesTestData.titleTextLocator).type(title)
         cy.get(actionpagesTestData.descriptionTextareaLocator).type(description)
         cy.contains(actionpagesTestData.submitButtonText).click()
@@ -169,6 +169,91 @@ class actionpages{
             cy.get('button[type="button"]').last().click({ force: true })
         })
         cy.contains(actionpagesTestData.actionlistDeleteModalText).should('exist')
+        cy.contains(actionpagesTestData.deleteButtonText).click()
+
+        cy.contains(title).should('not.exist')
+    }
+
+    clickAddActionblogButton(){
+        cy.contains(actionpagesTestData.addActionblogButtonText).should('exist')
+        cy.contains(actionpagesTestData.addActionblogButtonText).click()
+
+        cy.contains(actionpagesTestData.newActionblogText).should('exist')
+        cy.url().should('contain', actionpagesTestData.newActionblogUrl)
+    }
+
+    addNewActionblog(isRequired = true, title, description = '', videoUrl = '', imageUrl = '', audioUrl = '', tags = '', callToActionText = '',
+        callToActionUrl = '', topicsOrListings = '', isUrl = true){
+        cy.get(actionpagesTestData.titleTextLocator).type(title)
+
+        if(!isRequired){
+            cy.get(actionpagesTestData.descriptionTextareaLocator).type(description)
+            cy.get(actionpagesTestData.videoUrlTextLocator).type(videoUrl)
+            cy.get(actionpagesTestData.imageUrlTextLocator).type(imageUrl)
+            cy.get(actionpagesTestData.audioUrlTextLocator).type(audioUrl)
+            cy.get(actionpagesTestData.tagsDropdownLocator).type(tags)
+            cy.contains(tags).click({ force: true })
+            cy.get(actionpagesTestData.callToActionTextLocator).type(callToActionText)
+            cy.get(actionpagesTestData.callToActionUrlLocator).type(callToActionUrl)
+            cy.get(actionpagesTestData.topicsOrListingDropdownLocator).type(topicsOrListings)
+            cy.contains(topicsOrListings).click({ force: true })
+        }
+
+        cy.contains(actionpagesTestData.submitButtonText).click().wait(1000) 
+
+        cy.contains(actionpagesTestData.actionBlogsText).should('exist')
+        cy.url().should('contain', '/tips')
+        cy.contains(title).should('exist')
+    }
+
+    addNewActionblogWithMaxValue(title, description, videoUrl, imageUrl, audioUrl, callToActionText, isMoreThanMaxValue = false){
+        cy.get(actionpagesTestData.titleTextLocator).type(title)
+        cy.get(actionpagesTestData.descriptionTextareaLocator).type(description)
+
+        cy.get(actionpagesTestData.videoUrlTextLocator).type(videoUrl)
+        cy.get(actionpagesTestData.imageUrlTextLocator).type(imageUrl)
+        cy.get(actionpagesTestData.audioUrlTextLocator).type(audioUrl)
+        cy.get(actionpagesTestData.callToActionTextLocator).type(callToActionText)
+
+        cy.contains(actionpagesTestData.submitButtonText).click().wait(1000) 
+
+        if(isMoreThanMaxValue){
+            cy.contains(actionpagesTestData.error20Characters).should("exist") //Action List Cost
+            cy.contains(actionpagesTestData.error40Characters).should("exist") //Call to Action Text
+            cy.contains(actionpagesTestData.error60Characters).should("exist") //Title
+            cy.contains(actionpagesTestData.error255Characters).should("exist") //Video, Image and Audio URL
+            //cy.contains(actionpagesTestData.error65535Characters).should("exist") //Description
+        } else {
+            cy.contains(actionpagesTestData.actionListsPageText).should('exist')
+            cy.url().should('contain', '/action-lists')
+            cy.contains(title).should('exist')
+        }
+    }
+
+    checkActionblogRequiredFields(title, description){
+        cy.get(actionpagesTestData.titleTextLocator).clear()
+        cy.get(actionpagesTestData.descriptionTextareaLocator).type(description)
+        cy.contains(actionpagesTestData.submitButtonText).click().wait(1000) 
+        cy.contains(actionpagesTestData.errorRequired).should('exist')
+    }
+
+    updateActionblog(isRequired = true, title, description, videoUrl = '', imageUrl = '', audioUrl = '', tags = '', callToActionText = '',
+        callToActionUrl = '', topicsOrListings = '', isUrl = true){
+        cy.contains(actionpagesTestData.updateButtonText).should('exist')
+        cy.contains(actionpagesTestData.updateButtonText).click()
+        cy.get(actionpagesTestData.titleTextLocator).clear().type(title)
+        cy.contains(actionpagesTestData.submitButtonText).click().wait(1000)    
+
+        cy.contains(actionpagesTestData.actionBlogsText).should('exist')
+        cy.url().should('contain', '/tips')
+        cy.contains(title).should('exist')
+    }
+
+    deleteActionblog(title){
+        cy.get('tr[class="ant-table-row ant-table-row-level-0"]').first().within(()=>{
+            cy.get('button[type="button"]').last().click({ force: true })
+        })
+        cy.contains(actionpagesTestData.actionblogDeleteModalText).should('exist')
         cy.contains(actionpagesTestData.deleteButtonText).click()
 
         cy.contains(title).should('not.exist')
