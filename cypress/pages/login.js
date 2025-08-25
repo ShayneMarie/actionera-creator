@@ -1,5 +1,5 @@
 const loginText = 'Log in to continue'
-const loginUrl = 'https://ae-sso.techtank.ca/admins/sign_in'
+const loginUrl = 'https://sso-release.ae-qa.techtank.ca/admins/sign_in'
 
 class login{
     redirectsToLoginPage(){
@@ -23,7 +23,10 @@ class login{
 
         cy.contains('Log in').click()
         
-        cy.contains(displayInPage).should('exist')
+        if(displayInPage == 'Timezone'){
+            cy.contains(displayInPage).should('exist')
+            cy.contains('OK').click()
+        }
     }
 }
 

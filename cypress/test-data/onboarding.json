@@ -1,0 +1,50 @@
+{
+    "welcomeImageText": "Welcome Image",
+    "welcomeVideoLinkText": "Welcome Video (Link)",
+    "homeTitle": "Home",
+    "file": "./cypress/fixtures/download.png",
+    "headLine": "Headline",
+    "message": "Welcome message ",
+    "topicsTitle": "Topics_",
+
+    "profileTitle": "ProfileTitle_", 
+    "profileName": "ProfileName_", 
+    "businessName": "BusinessName_", 
+    "willUseBusinessName": false, 
+    "bio": "Bio Message_", 
+    "businessEmail": "email@test.com", 
+    "websiteLink": "https://website.com",
+    "facebookLink": "https://facebook.com", 
+    "twitterLink": "https://twitter.com", 
+    "instagramLink": "https://instagram.com", 
+    "youtubeLink": "https://youtube.com", 
+    "linkedInLink": "https://linkedin.com",
+
+    "galleryTitle": "Gallery Title_", 
+    "galleryDescription": "Gallery Descirption_",
+
+    "blogTitle": "Blog Title_", 
+    "blogContent": "Blog Content_", 
+    "blogImageUrl": "https://test.com", 
+    "blogPostOption": "URL",
+
+    "videoTitle": "Video Title_", 
+    "videoDescription": "Video Description_", 
+    "videoUrl": "https://youtube.com",
+
+    "articleTitle": "Article Title_", 
+    "articleAuthor": "Article Author", 
+    "articleDescription": "Article Descirption_",
+
+    "journalsTitle": "Journals Title_", 
+    "journalsdescription": "Journals Description_",
+    "journalsQuestion1": "Journals Question 1?", 
+    "journalsQuestion2": "Journals Question 2?", 
+    "journalsQuestion3": "Journals Question 3?", 
+    "journalsQuestion4": "Journals Question 4?", 
+    "journalsQuestion5": "Journals Question 5?",
+
+    "questionEmail": "shayne+question@techtank.ca", 
+    "question": "Question_", 
+    "answer": "Anser_"
+}

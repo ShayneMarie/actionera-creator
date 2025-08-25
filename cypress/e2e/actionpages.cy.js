@@ -141,7 +141,7 @@ describe('Actionpages menus redirection - Creator', () => {
     })
 })
 
-describe.only('Actionlists', ()=> {
+describe('Actionlists', ()=> {
     beforeEach('Redirect to Actionlist page', () => {
         localStorage.setItem('auth', Cypress.env('accessToken'))
         cy.visit('/change_application')
@@ -161,7 +161,7 @@ describe.only('Actionlists', ()=> {
         })
 
         it('Successful deleting of actionlist', ()=> {
-            actionpages.deleteActionList(`${actionlistTitle}`)
+            actionpages.deleteActionList(`${actionlistTitle}_update`)
         })
 
         it('Successful adding of actionlists with all fields', ()=> {

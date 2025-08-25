@@ -132,7 +132,7 @@ class actionpages{
         callToActionUrl = '', actionListCost = '', topicsOrListings = '', isUrl = true){
         cy.contains(updateButtonText).should('exist')
         cy.contains(updateButtonText).click()
-        cy.get(titleTextLocator).type(title)
+        cy.get(titleTextLocator).clear().type(title)
         cy.get(descriptionTextareaLocator).type(descriptionTextareaLocator)
         cy.get(frequencyDropdownLocator).select(frequency)
         cy.contains(submitButtonText).click()    
