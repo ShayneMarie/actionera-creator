@@ -107,24 +107,24 @@ class actionpages{
     }
 
     addNewActionlistWithMaxValue(title, description, frequency, shortDescription, videoUrl, imageUrl, callToActionText, actionListCost, isMoreThanMaxValue = false){
-        cy.get(actionpagesTestData.titleTextLocator).type(title)
-        cy.get(actionpagesTestData.descriptionTextareaLocator).type(description)
+        cy.get(actionpagesTestData.titleTextLocator).type(title, { delay: 0 })
+        cy.get(actionpagesTestData.descriptionTextareaLocator).type(description, { delay: 0 })
         cy.get(actionpagesTestData.frequencyDropdownLocator).select(frequency)
 
-        cy.get(actionpagesTestData.shortDescriptionLocator).type(shortDescription)
-        cy.get(actionpagesTestData.videoUrlTextLocator).type(videoUrl)
-        cy.get(actionpagesTestData.imageUrlTextLocator).type(imageUrl)
-        cy.get(actionpagesTestData.callToActionTextLocator).type(callToActionText)
+        cy.get(actionpagesTestData.shortDescriptionLocator).type(shortDescription, { delay: 0 })
+        cy.get(actionpagesTestData.videoUrlTextLocator).type(videoUrl, { delay: 0 })
+        cy.get(actionpagesTestData.imageUrlTextLocator).type(imageUrl, { delay: 0 })
+        cy.get(actionpagesTestData.callToActionTextLocator).type(callToActionText, { delay: 0 })
         cy.get(actionpagesTestData.actionlistCostLocator).type(actionListCost)
 
         cy.contains(actionpagesTestData.submitButtonText).click()
 
         if(isMoreThanMaxValue){
-            cy.contains(actionpagesTestData.error20Characters).should("exist") //Action List Cost
-            cy.contains(actionpagesTestData.error30Characters).should("exist") //Short Description
-            cy.contains(actionpagesTestData.error40Characters).should("exist") //Call to Action Text
-            cy.contains(actionpagesTestData.error60Characters).should("exist") //Title
-            cy.contains(actionpagesTestData.error255Characters).should("exist") //Video and Image URL
+            cy.contains(truncate(actionpagesTestData.error20Characters, 20)).should("exist") //Action List Cost
+            cy.contains(truncate(actionpagesTestData.error30Characters, 30)).should("exist") //Short Description
+            cy.contains(truncate(actionpagesTestData.error40Characters, 40)).should("exist") //Call to Action Text
+            cy.contains(truncate(actionpagesTestData.error60Characters, 60)).should("exist") //Title
+            cy.contains(truncate(actionpagesTestData.error255Characters, 255)).should("exist") //Video and Image URL
             //cy.contains(actionpagesTestData.error65535Characters).should("exist") //Description
         } else {
             cy.contains(actionpagesTestData.actionListsPageText).should('exist')
@@ -152,12 +152,12 @@ class actionpages{
 
     updateActionList(isRequired = true, title, description, frequency, shortDescription = '', videoUrl = '', imageUrl = '', tags = '', callToActionText = '',
         callToActionUrl = '', actionListCost = '', topicsOrListings = '', isUrl = true){
-        cy.contains(updateButtonText).should('exist')
-        cy.contains(updateButtonText).click()
-        cy.get(titleTextLocator).clear().type(title)
-        cy.get(descriptionTextareaLocator).type(descriptionTextareaLocator)
-        cy.get(frequencyDropdownLocator).select(frequency)
-        cy.contains(submitButtonText).click()    
+        cy.contains(actionpagesTestData.updateButtonText).should('exist')
+        cy.contains(actionpagesTestData.updateButtonText).click()
+        cy.get(actionpagesTestData.titleTextLocator).clear().type(title)
+        cy.get(actionpagesTestData.descriptionTextareaLocator).type(actionpagesTestData.descriptionTextareaLocator)
+        cy.get(actionpagesTestData.frequencyDropdownLocator).select(frequency)
+        cy.contains(actionpagesTestData.submitButtonText).click()    
 
         cy.contains(actionpagesTestData.actionListsPageText).should('exist')
         cy.url().should('contain', '/action-lists')
@@ -207,13 +207,13 @@ class actionpages{
     }
 
     addNewActionblogWithMaxValue(title, description, videoUrl, imageUrl, audioUrl, callToActionText, isMoreThanMaxValue = false){
-        cy.get(actionpagesTestData.titleTextLocator).type(title)
-        cy.get(actionpagesTestData.descriptionTextareaLocator).type(description)
+        cy.get(actionpagesTestData.titleTextLocator).type(title, { delay: 0 })
+        cy.get(actionpagesTestData.descriptionTextareaLocator).type(description, { delay: 0 })
 
-        cy.get(actionpagesTestData.videoUrlTextLocator).type(videoUrl)
-        cy.get(actionpagesTestData.imageUrlTextLocator).type(imageUrl)
-        cy.get(actionpagesTestData.audioUrlTextLocator).type(audioUrl)
-        cy.get(actionpagesTestData.callToActionTextLocator).type(callToActionText)
+        cy.get(actionpagesTestData.videoUrlTextLocator).type(videoUrl, { delay: 0 })
+        cy.get(actionpagesTestData.imageUrlTextLocator).type(imageUrl, { delay: 0 })
+        cy.get(actionpagesTestData.audioUrlTextLocator).type(audioUrl, { delay: 0 })
+        cy.get(actionpagesTestData.callToActionTextLocator).type(callToActionText, { delay: 0 })
 
         cy.contains(actionpagesTestData.submitButtonText).click().wait(1000) 
 

@@ -26,7 +26,7 @@ describe('Biz+', () => {
     cy.visit('/')
     login.redirectsToLoginPage()
     login.loginToCreatorPortal(timezoneText, bizEmail, bizPlusTestData.password)
-    //login.loginToCreatorPortal(timezoneText, 'shayne+bizplus+08182025043535@techtank.ca', bizPlusTestData.password)
+    //login.loginToCreatorPortal(timezoneText, 'shayne+test+0825@techtank.ca', bizPlusTestData.password)
 
     onboarding.onboardingTab()
     onboarding.bizPlusAndEnterpriseSection()

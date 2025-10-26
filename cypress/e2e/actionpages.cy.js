@@ -262,7 +262,7 @@ describe('Actionlists', ()=> {
                 actionpagesTestData.videoUrl, actionpagesTestData.imageUrl, actionpagesTestData.tags, actionpagesTestData.callToActionText, actionpagesTestData.callToActionUrl, 
                 actionpagesTestData.cost, actionpagesTestData.topics, true)
 
-            describe('Delete actionlists', ()=> {
+            context('Delete actionlists', ()=> {
                 it('Successful deleting of actionlist', ()=> {
                     actionpages.deleteActionList(actionlistTitle)
                 })
@@ -273,7 +273,7 @@ describe('Actionlists', ()=> {
             actionpages.clickAddActionlistButton()
             actionpages.addNewActionlistWithMaxValue(maxValueText.sixty, maxValueText.thirty, actionpagesTestData.dailyFrequency, maxValueText.thirty, maxValueText.url255, maxValueText.url255, maxValueText.forty, maxValueText.integer20)
 
-            describe('Delete actionlists', ()=> {
+            context('Delete actionlists', ()=> {
                 it('Successful deleting of actionlist', ()=> {
                     actionpages.deleteActionList(maxValueText.sixty)
                 })
@@ -294,7 +294,7 @@ describe('Actionlists', ()=> {
     })
 })
 
-describe.only('Actionblogs', ()=> {
+describe('Actionblogs', ()=> {
     beforeEach('Redirect to Actionblogs page', () => {
         localStorage.setItem('auth', Cypress.env('accessToken'))
         cy.visit('/change_application')
@@ -322,18 +322,18 @@ describe.only('Actionblogs', ()=> {
             actionpages.addNewActionblog(false, actionBlogTitle, `${actionpagesTestData.description}_${today}`, actionpagesTestData.videoUrl, actionpagesTestData.imageUrl, 
                 actionpagesTestData.audioUrl, actionpagesTestData.tags, actionpagesTestData.callToActionText, actionpagesTestData.callToActionUrl, actionpagesTestData.topics, true)
 
-            describe('Delete actionblog', ()=> {
+            context('Delete actionblog', ()=> {
                 it('Successful deleting of actionblog', ()=> {
                     actionpages.deleteActionblog(actionBlogTitle)
                 })
             })
         })
 
-        it.only('Successful adding of actionblog with max values', ()=> {
+        it('Successful adding of actionblog with max values', ()=> {
             actionpages.clickAddActionblogButton()
             actionpages.addNewActionblogWithMaxValue(maxValueText.sixty, maxValueText.thirty, maxValueText.url255, maxValueText.url255, maxValueText.url255, maxValueText.fifty)
 
-            describe('Delete actionblog', ()=> {
+            context('Delete actionblog', ()=> {
                 it('Successful deleting of actionblog', ()=> {
                     actionpages.deleteActionblog(maxValueText.sixty)
                 })
@@ -347,7 +347,7 @@ describe.only('Actionblogs', ()=> {
             actionpages.checkActionblogRequiredFields(actionBlogTitle, `${actionpagesTestData.description}_${today}`)
         })
 
-        it.only('Unsuccessful adding of actionblog with max values', ()=> {
+        it('Unsuccessful adding of actionblog with max values', ()=> {
             actionpages.clickAddActionblogButton()
             actionpages.addNewActionblogWithMaxValue(`${maxValueText.sixty}a`, `${maxValueText.thirty}a`, `${maxValueText.url255}a`, `${maxValueText.url255}a`, `${maxValueText.url255}a`, `${maxValueText.fifty}a`, true)
         })

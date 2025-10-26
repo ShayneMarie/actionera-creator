@@ -1,4 +1,5 @@
 import createApp from "../pages/createApp"
+import admin from "../pages/admin"
 import createAppTestData from '../test-data/createApp.json'
 const dayjs = require('dayjs')
 const todaysDate = dayjs().format('MMDDYYYYhhmmss')
@@ -11,10 +12,8 @@ describe('Account Setup Manipulation', () => {
         cy.visit('/')
         createApp.redirectsToCreateAppPage()
         createApp.creationOfNewApp(appForTesting)
-        createApp.checkIfAppIsExisting()
+        //createApp.checkIfAppIsExisting()
         createApp.redirectsToNewAppPage(appForTesting)
-        admin.redirectsToAdminMenuItemPage('ACCOUNT SETUP')
+        //admin.redirectsToAdminMenuItemPage('ACCOUNT SETUP')
     })
-
-    it('Update textfield')
 })

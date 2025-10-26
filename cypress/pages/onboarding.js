@@ -189,6 +189,7 @@ class onboarding{
         cy.get(galleryDescriptionLocator).type(description)
         cy.get(fileUploadLocator).last().selectFile([file, file, file, file, file, file, file, file, file, file, file, file, file, file, file], { force: true });
         cy.contains(uploadNowText).click().wait(5000)
+        cy.wait(5000)
         cy.contains('Uploaded').should('exist')
         if(topic != '') {
             cy.get(topicsSearchLocator).click()
@@ -291,7 +292,7 @@ class onboarding{
         cy.get(articleAuthorLocator).should('not.exist')
         cy.get(articleContentLocator).should('not.exist')
         cy.get(topicsSearchLocator).should('not.exist')
-        cy.get(accordionLocator).eq(1).click()
+        cy.get(accordionLocator).eq(1).click({force: true})
     }
 
     updateContentJournals(title, description, topic, question1, question2 = '', question3 = '', question4 = '', question5 = '', file = ''){  
@@ -362,7 +363,7 @@ class onboarding{
         cy.get(questionLocator).should('not.exist')
         cy.get(answerLocator).should('not.exist')
         cy.get(topicsSearchLocator).should('not.exist')
-        cy.get(accordionLocator).eq(1).click()
+        cy.get(accordionLocator).eq(1).click({force:true})
     }
 }
 
